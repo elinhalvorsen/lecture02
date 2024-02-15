@@ -1,4 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 const root = ReactDOM.createRoot(document.getElementById("root")!);
-root.render(<h1>Hello React</h1>);
+
+const MapApplication = () => {
+    return (
+        <>
+            <header>
+                <h1>Mitt første kart</h1>
+                <nav></nav>
+            </header>
+        </>
+    );
+};
+root.render(<MapApplication />);
