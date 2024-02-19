@@ -9,7 +9,9 @@
     "dependencies": {
         "ol": "^8.2.0",
         "react": "^18.2.0",
-        "react-dom": "^18.2.0"
+        "react-dom": "^18.2.0",
+        "react-toastify": "^10.0.4",
+        "toastify": "^2.0.1"
     },
     "scripts": {
         "dev": "vite",

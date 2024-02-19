@@ -35,7 +35,7 @@ const MapApplication = () => {
                 <h1>Kart</h1>
             </header>
             <nav>
-                <KommunerLayerCheckbox setLayers={setLayers} />
+                <KommunerLayerCheckbox setLayers={setLayers} map={map} />
             </nav>
             <main ref={mapRef}>
                 <p>Mitt første kart</p>
