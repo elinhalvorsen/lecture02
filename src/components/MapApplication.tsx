@@ -3,6 +3,7 @@ import { Map, View } from "ol";
 import TileLayer from "ol/layer/Tile";
 import { OSM } from "ol/source";
 import { useGeographic } from "ol/proj";
+import KommunerLayerCheckbox from "./KommunerLayerCheckbox";
 
 //Denne forteller at det er grader og ikke meter
 useGeographic();
@@ -30,7 +31,9 @@ const MapApplication = () => {
             <header>
                 <h1>Kart</h1>
             </header>
-            <nav>Actions</nav>
+            <nav>
+                <KommunerLayerCheckbox />
+            </nav>
             <main ref={mapRef}>
                 <p>Mitt første kart</p>
             </main>
