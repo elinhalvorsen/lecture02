@@ -24,7 +24,15 @@ const KommunerLayerCheckbox = ({
             }),
         []
     );
+
     const [checked, setChecked] = useState(false);
+    useEffect(() => {
+        if (checked) {
+            setLayers((old) => [...old, kommuneLayer]);
+        } else {
+            setLayers((old) => old.filter((l) => l === kommuneLayer));
+        }
+    }, [checked]);
 
     return (
         <>
