@@ -1,18 +1,14 @@
-import React, { MutableRefObject, useEffect, useRef } from "react";
+import React, { MutableRefObject, useEffect, useRef, useState } from "react";
 import { Map, View } from "ol";
 import TileLayer from "ol/layer/Tile";
 import { OSM } from "ol/source";
 import { useGeographic } from "ol/proj";
-import KommunerLayerCheckbox from "./KommunerLayerCheckbox";
+import KommunerLayerCheckbox from "./filteredMap.tsx/KommunerLayerCheckbox";
+import Layer from "ol/layer/Layer";
 
 //Denne forteller at det er grader og ikke meter
 useGeographic();
 const map = new Map({
-    layers: [
-        new TileLayer({
-            source: new OSM(),
-        }),
-    ],
     view: new View({
         center: [10, 59],
         zoom: 8,
@@ -20,6 +16,13 @@ const map = new Map({
 });
 
 const MapApplication = () => {
+    const [layers, setLayers] = useState<Layer[]>([
+        new TileLayer({ source: new OSM() }),
+    ]);
+    useEffect(() => {
+        map.setLayers(layers);
+    }, [layers]);
+
     const mapRef = useRef() as MutableRefObject<HTMLDivElement>;
 
     useEffect(() => {
@@ -32,7 +35,7 @@ const MapApplication = () => {
                 <h1>Kart</h1>
             </header>
             <nav>
-                <KommunerLayerCheckbox />
+                <KommunerLayerCheckbox setLayers={setLayers} />
             </nav>
             <main ref={mapRef}>
                 <p>Mitt første kart</p>
